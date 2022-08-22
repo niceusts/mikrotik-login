@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="css/newstyle.css">
+    <title>Internet hotspot - Create log in</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<style>
+    .eyeSee {
+        position: absolute;
+        right: 46px;
+        transform: translateY(-130%);
+        cursor: pointer;
+    }
+
+    body {
+        height: 1100px !important;
+    }
+
+    #formCreate {
+        margin: 100px 0px;
+    }
+
+    .erro {
+        border-color: red;
+        border-bottom: 2px solid rgb(158, 0, 0) !important;
+        color: red;
+    }
+    .blocker {
+        background-color: transparent;
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        z-index: 1;
+        padding: 12px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .modal {
+        font-family: 'Poppins', sans-serif;
+        color: #272727;
+        letter-spacing: 0.5px;
+        outline: none;
+        top: -380px;
+        font-size: 12px;
+        padding: 10px 15px;
+        border: 3px solid rgb(221 0 0);
+        max-width: 200px;
+    }
+
+    
+</style>
+
+
+<body>
+    <div class="main " id="creatLogin">
+        <div class="aceitarTermos">
+            <div id="ex1" class="modal">
+                <p>Para continuar é necessário aceitar os termos de uso</p>
+                <a href="#" rel="modal:close"></a>
+            </div>
+            <p><a hidden id="clickModal" href="#ex1" rel="modal:open">Open Modal</a></p>
+        </div>
+        <form id="formCreate" name="login" action="https://wifigratis.estancia.se.gov.br:3000/user-create" method="post"
+            $(if chap-id) onSubmit="return doLogin()" $(endif)>
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />
+
+            <div class="img-PME">
+                <img src="img/imgBannerPME.png" width="50" />
+            </div>
+            <h3>Criar conta</h3>
+            <input class="inputModel" type="hidden" name="popup" value="wifigratis" />
+
+            <div class="tab">
+                <label for="username">E-mail</label>
+                <input class="inputModel" name="username" type="email" required placeholder="E-mail" id="username">
+
+                <label for="notes">CPF</label>
+                <input class="inputModel" name="notes" type="text" required placeholder="CPF" id="notes">
+
+                <label for="firstname">Nome</label>
+                <input class="inputModel" name="firstname" type="text" required placeholder="Primeiro Nome"
+                    id="firstname">
+
+                <label for="lastname">Sobrenome</label>
+                <input class="inputModel" name="lastname" type="text" required placeholder="Sobrenome" id="lastname">
+
+                <label for="value">Senha</label>
+                <input class="inputModel" name="value" type="password" placeholder="Senha" id="value">
+
+                <label for="Confirmpassword">Confirmar senha
+                    <input class="inputModel Confirmpassword" name="password" type="password"
+                        placeholder="Confirmar senha" id="Confirmpassword">
+                    <span class="eyeSee fas fa-eye"></span>
+                </label>
+
+            </div>
+
+            <div class="tab">
+                <label for="zip">CEP</label>
+                <input class="inputModel" name="zip" type="number" value="" required placeholder="CEP" id="zip">
+
+                <label for="firstname">Cidade</label>
+                <input class="inputModel" name="city" type="text" required placeholder="Cidade" id="city" disabled>
+
+                <label for="state">Estado</label>
+                <input class="inputModel" name="state" type="text" required placeholder="Estado" id="state" disabled>
+
+                <label for="address">Endereço</label>
+                <input class="inputModel" name="address" type="text" required placeholder="Endereço" id="address">
+
+                <label for="country">Nacionalidade</label>
+                <input class="inputModel" name="country" type="text" required placeholder="Nacionalidade" id="country">
+
+                <label for="mobilephone">Celular</label>
+                <input class="inputModel" name="mobilephone" type="text" required placeholder="Celular" id="mobilephone"
+                    onkeypress="mask(this, mphone);" onblur="mask(this, mphone);">
+            </div>
+
+            <div style="overflow:auto;">
+                <div class="btnPrev" style="float:right;">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Voltar</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Próximo</button>
+                </div>
+            </div>
+            
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+
+            <div class="ajustAlign">
+                <a href="login.html"> Já é cadastrado? </a>
+            </div>
+
+            <div class="termosdeUso">
+                <input type="checkbox" name="checkMark" id="checked" required/>
+                <label for="checked"></label>
+                <a href="https://www.freecodecamp.org/"> termos de uso</a>
+                
+            </div>
+            <p class="info">DTI - Departamento de Tecnologia da Informação</p>
+        </form>
+
+    </div>
+    <!-- <button type="submit" value="Conectar" id="buttonAll"></button> -->
+
+</body>
+
+</html>
+<script src="md5.js"></script>
+<script src="validator.js"></script>
+<script src="viacep.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script>
+    let btn = document.querySelector('.eyeSee');
+    btn.addEventListener('click', function () {
+        let input = document.querySelector('.Confirmpassword');
+        if (input.getAttribute('type') == 'password') {
+            input.setAttribute('type', 'text');
+        } else {
+            input.setAttribute('type', 'password');
+        }
+    });
+    
+    // let checkTerm = document.querySelector('#checked');
+    // let btnCheck = document.querySelector('#buttonAll');
+
+    // btnCheck.addEventListener('click', function () {
+    //     if (checkTerm.checked) {
+    //        alert("ok");
+    //     } else {
+    //         $('#clickModal').click();
+    //     }
+    // });
+</script>
+
+<script>
+    var formularioDeContato = document.getElementById('formularioDeContato');
+
+
+// Função que pega o elemento campoNome, campoEmail, grupoNome, GrupoEmail
+function elemento(tipo, id) {
+  return document.getElementById(tipo+id);
+}
+
+
+
+// Função que recebe o campo e informa se ele está valido ou não
+// Esta função também vai adicionar ou remover a classe do bootstrap que deixar vermelhinho,
+// Se estiver errado
+function validar(id) {
+  var campo = elemento('campo', id);
+  var grupo = elemento('grupo', id);
+  
+  // Chama a função checkValidity que valida o campo de acordo com o HTML 5
+  var oCampoEstaValido = campo.checkValidity();
+  
+  if(oCampoEstaValido) {
+    //Se o campo estiver válido, remove a classe
+    grupo.classList.remove('has-danger'); 
+  } else {
+    // Se o campo estiver inválido
+    grupo.classList.add('has-danger');   
+  }
+  
+  return oCampoEstaValido;
+}
+
+
+
+// Função que valida o campo nome
+function validarNome() {
+  return validar('Nome');
+}
+
+
+
+// Função que valida o campo e-mail
+function validarEmail() {
+  return validar('Email');
+}
+
+
+
+// Função que valida o formulário todo
+function validarFormulario(event) {
+  
+  // Primeiro checa o nome
+  var oCampoNomeEstaValido = validarNome();
+  
+  // Depois checa o e-mail
+  var oCampoEmailEstaValido = validarEmail();
+  
+  // Agora verifica os dois JUNTOS
+  var oFormularioEstaValido = oCampoNomeEstaValido && oCampoEmailEstaValido;
+  
+  // Não recarrega a página. Deixa o usuário preso nessa mesma página.
+  event.preventDefault();
+  
+  // Se o formulário estiver válido
+  if(oFormularioEstaValido) {
+    
+    // Exibe um alerta informando que a mensagem foi enviada.
+    alert('Sua mensagem foi enviada com sucesso!');
+    
+    // Limpa o formulário
+    formularioDeContato.reset();
+  }
+  
+  return oFormularioEstaValido;
+}
+
+
+
+
+// Configura o campo para executar a validacao sempre que terminar de digitar alguma coisa
+campoNome.onkeyup = validarNome;
+campoEmail.onkeyup = validarEmail;
+
+
+
+// Configura o formulário para execudar a validacao sempre que o botão enviar for selecionado
+// Ou caso o usuário pressione a tecla enter do teclado.
+formularioDeContato.onsubmit = validarFormulario;
+</script>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="css/newstyle.css">
+    <title>Internet hotspot - Log in</title>
+</head>
+
+<style>
+    .eyeSee {
+        position: absolute;
+        bottom: 283px;
+        right: 50px;
+        cursor: pointer;
+    }
+
+    .blocker {
+        background-color: transparent;
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        z-index: 1;
+        padding: 12px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .modal {
+        font-family: 'Poppins', sans-serif;
+        color: #272727;
+        letter-spacing: 0.5px;
+        outline: none;
+        top: -380px;
+        font-size: 12px;
+        padding: 10px 15px;
+        border: 3px solid rgb(221 0 0);
+        max-width: 200px;
+    }
+</style>
+
+<body>
+
+    <!-- two other colors
+
+<body class="lite">
+<body class="dark">
+
+-->
+
+    <!-- $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+    $(endif) -->
+    <div class="main login">
+
+        <div class="aceitarTermos">
+            <div id="ex1" class="modal">
+                <p>Para continuar é necessário aceitar os termos de uso</p>
+                <a href="#" rel="modal:close"></a>
+            </div>
+            <p><a hidden id="clickModal" href="#ex1" rel="modal:open">Open Modal</a></p>
+        </div>
+
+        <form id="formLogin" name="login" action="$(link-login-only)" method="post" $(if chap-id)
+            onSubmit="return doLogin()" $(endif)>
+            <input type="hidden" name="dst" value="$(link-orig)" />
+            <input type="hidden" name="popup" value="true" />
+
+            <p class="info $(if error)alert$(endif)">
+               
+            </p>
+            <div class="img-PME">
+                <img src="img/imgBannerPME.png" width="50" />
+            </div>
+            <h3>Login</h3>
+
+            <label for="username">Usuário
+                <input class="inputModel" name="username" type="email" placeholder="E-mail" id="username" required>
+            </label>
+
+            <label for="password">Senha
+                <input class="inputModel" name="password" type="password" placeholder="Senha" id="password" required>
+                <span class="eyeSee fas fa-eye"></span>
+            </label>
+
+            <div class="ajustAlign">
+                <a href="recoverPassword.html">Esqueceu a senha?</a>
+            </div>
+
+            <input type="submit" value="Conectar" id="buttonAll"></button>
+
+            <div class="ajustAlign">
+                <a href="createLogin.html"> Não é cadastrado? </a>
+            </div>
+
+            <div class="termosdeUso">
+                <input type="checkbox" name="checkMark" id="checked" required/>
+                <label for="checked"></label>
+                <a href="https://www.freecodecamp.org/"> termos de uso</a>
+            </div>
+            <p class="info bt">DTI - Departamento de Tecnologia da Informação</p>
+        </form>
+        
+    </div>
+    
+</body>
+
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script>
+    let btn = document.querySelector('.eyeSee');
+    btn.addEventListener('click', function () {
+        let input = document.querySelector('#password');
+        if (input.getAttribute('type') == 'password') {
+            input.setAttribute('type', 'text');
+        } else {
+            input.setAttribute('type', 'password');
+        }
+    });
+
+    let checkTerm = document.querySelector('#checked');
+    let btnCheck = document.querySelector('#buttonAll');
+
+    btnCheck.addEventListener('click', function () {
+        if (checkTerm.checked) {
+            ok
+        } else {
+            $('#clickModal').click();
+        }
+    });
+</script>
